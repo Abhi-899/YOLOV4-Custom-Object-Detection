@@ -32,3 +32,31 @@ The images are very diverse and often contain complex scenes with several object
 
 -> Extension - 478,000 crowdsourced images with 6,000+ categories
 
+To download a dataset from OID:
+
+Step 1: Install git
+
+Step 2: Open your command prompt or anaconda prompt and write the following commands:
+         ```
+         git clone https://github.com/EscVM/OIDv4_Toolkit.git
+         python main.py downloader --classes Ambulance Car Person --type_csv train --multiclass 1 --limit 100
+         ```
+Step3: For running on google colab
+       ```
+       !git clone https://github.com/EscVM/OIDv4_Toolkit.git
+       !python main.py downloader --classes Ambulance Car Person --type_csv train --multiclass 1 --limit 100
+       ```
+One will get the OID repo here: https://g.co/dataset/open-images       
+### NOTE
+In case you want to download multiple images at once through google search. Use
+```
+!pip install icrawler
+from icrawler.builtin import GoogleImageCrawler
+google_Crawler = GoogleImageCrawler(storage = {'root_dir': r'write the name of the directory you want to save to here'})
+google_Crawler.crawl(keyword = 'sad human faces', max_num = 800)
+```
+
+       
+
+
+
