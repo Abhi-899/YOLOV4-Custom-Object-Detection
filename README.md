@@ -113,3 +113,12 @@ os.chdir('/content/drive/MyDrive/YOLO_V4/darknet')
 ## OUTPUT:
 ![Screenshot (6)](https://user-images.githubusercontent.com/64439578/124911234-2467a880-e00a-11eb-82d1-45b3e8f39c92.png)
 
+## NOTE :
+The testing could have been done better by adding the -thresh flag. We could easily see after running the output1.avi that a black van was also detected as an ambulance but with a lower threshold. Now that can be improved by:
+        
+1) Training with more ambulance images
+         
+2) Setting a higher threshold during testing 
+         
+3) If more images are not available we can also augment the images and use labelimg to label the images and create the corresponding annotation file
+         
