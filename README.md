@@ -55,8 +55,12 @@ from icrawler.builtin import GoogleImageCrawler
 google_Crawler = GoogleImageCrawler(storage = {'root_dir': r'write the name of the directory you want to save to here'})
 google_Crawler.crawl(keyword = 'sad human faces', max_num = 800)
 ```
-
-       
+## Building the detector
+The first thing we have to do is cloning and building the darknet.The following cells will clone darknet from AlexeyAB's famous repository, adjust the Makefile to enable OPENCV and GPU for darknet and then build darknet.
+```
+ !git clone https://github.com/AlexeyAB/darknet
+ ```
+ Now we have to make the dataset directory structure suitable for YOLOv4. So first we have to run the 
 
 
 
