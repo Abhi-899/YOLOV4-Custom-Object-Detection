@@ -60,7 +60,7 @@ The first thing we have to do is cloning and building the darknet.The following 
 ```
  !git clone https://github.com/AlexeyAB/darknet
  ```
- Now we have to make the dataset directory structure suitable for YOLOv4. So first we have to run the 
+Now we have to make the dataset directory structure suitable for YOLOv4. So first we have to run the annotation.py and the( train and test creation.py) which would create text files containing the data about the images. Each image file will have a corresponding text file named <image name>.txt along with the train.txt , the test.txt files wuth the absolute paths of the train and test images. It also creates the image_data.data file which contains the no. of classes, paths to train.txt and test.txt and also the backup folder where the weights files for checkpoints after every 100 steps will be stored.   
 
 
 
