@@ -60,7 +60,56 @@ The first thing we have to do is cloning and building the darknet.The following 
 ```
  !git clone https://github.com/AlexeyAB/darknet
  ```
-Now we have to make the dataset directory structure suitable for YOLOv4. So first we have to run the annotation.py and the( train and test creation.py) which would create text files containing the data about the images. Each image file will have a corresponding text file named <image name>.txt along with the train.txt , the test.txt files wuth the absolute paths of the train and test images. It also creates the image_data.data file which contains the no. of classes, paths to train.txt and test.txt and also the backup folder where the weights files for checkpoints after every 100 steps will be stored.   
+Now we have to make the dataset directory structure suitable for YOLOv4. So first we have to run the annotation.py and the( train and test creation.py) which would create text files containing the data about the images.
+```
+!python annotation.py
+!python train and test creation.py
+```
+Each image file will have a corresponding text file named <image name>.txt along with the train.txt , the test.txt files wuth the absolute paths of the train and test images. It also creates the image_data.data file which contains the no. of classes, paths to train.txt and test.txt and also the backup folder where the weights files for checkpoints after every 1000 steps will be stored along with the weights of the last checkpoint.
 
+## Configuring Files for Training   
+Now we need to edit the .cfg to fit our needs based on our object detector. Open it up in a code or text editor to do so.
 
+If we downloaded cfg to google drive we can use the built in Text Editor by going to our google drive and double clicking on yolov4-obj.cfg and then clicking on the Open with drop down and selectin Text Editor.
+![image](https://user-images.githubusercontent.com/64439578/124907089-63472f80-e005-11eb-9c87-8ac5a8206cfb.png)
+We recommend having batch = 64 and subdivisions = 16 for ultimate results. If we run into any issues then up subdivisions to 32.
+
+Make the rest of the changes to the cfg based on how many classes you are training your detector on.
+
+Note: We set my max_batches = 6000, steps = 4800, 5400, I changed the classes = 1 in the three YOLO layers and filters = 18 in the three convolutional layers before the YOLO layers.
+
+How to Configure Your Variables:
+
+width = 416
+
+height = 416 (these can be any multiple of 32, 416 is standard, you can sometimes improve results by making value larger like 608 but will slow down training)
+
+max_batches = (# of classes) * 2000 (but no less than 6000 so if you are training for 1, 2, or 3 classes it will be 6000, however detector for 5 classes would have max_batches=10000)
+
+steps = (80% of max_batches), (90% of max_batches) (so if your max_batches = 10000, then steps = 8000, 9000)
+
+filters = (# of classes + 5) * 3 (so if you are training for one class then your filters = 18, but if you are training for 4 classes then your filters = 27)         
+
+## Training
+First we have to download the pre-trained weights for convolution layers.
+```
+!wget https://github.com/AlexeyAB/darknet/releases/download/darknet_yolo_v3_optimal/yolov4.conv.137
+```
+Now run the following command to train the model. The -dont_show flag stops streaming during training
+```
+!./darknet detector train data/Person_Car_Ambulance/image_data.data cfg/yolov4_train.cfg yolov4.conv.137 -dont_show 
+```
+## Testing
+We will be testing our model on a video taken by a moving traffic camera.
+```
+!./darknet detector demo data/Person_Car_Ambulance/image_data.data cfg/yolov4_test.cfg /content/drive/MyDrive/YOLO_V4/darknet/backup/yolov4_train_last.weights -dont_show /content/drive/MyDrive/YOLO_V4/test.mp4  -i 0 -out_filename /content/drive/MyDrive/YOLO_V4/output.avi   
+```
+Note that you would have to change your class names and paths given according to your model. Now remember that you have to give permission to your YOLO model for execution. That can be done using the following code:
+```
+os.chdir('/content/drive/MyDrive/YOLO_V4/darknet')
+!sudo chmod +x darknet
+!./darknet
+```
+## OUTPUT:
+![Screenshot (6)](https://user-images.githubusercontent.com/64439578/124911234-2467a880-e00a-11eb-82d1-45b3e8f39c92.png)
 
