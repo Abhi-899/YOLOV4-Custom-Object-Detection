@@ -16,3 +16,19 @@ Given below is the architecture of the model:
 For more one can look into the YOLOv4 model paper.THe link is given below:
 
 https://arxiv.org/pdf/2004.10934.pdf
+## Google OID
+A dataset of ~9 million varied images with rich annotations.
+The images are very diverse and often contain complex scenes with several objects (8.4 per image on average). It contains image-level labels annotations, object bounding boxes, object segmentations, visual relationships, localized narratives, and more. It contains 
+
+-> 15,851,536 boxes on 600 categories
+
+-> 2,785,498 instance segmentations on 350 categories
+
+-> 3,284,280 relationship annotations on 1,466 relationships
+
+-> 675,155 localized narratives
+
+-> 59,919,574 image-level labels on 19,957 categories
+
+-> Extension - 478,000 crowdsourced images with 6,000+ categories
+
