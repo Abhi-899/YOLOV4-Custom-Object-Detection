@@ -122,3 +122,12 @@ The testing could have been done better by adding the -thresh flag. We could eas
          
 3) If more images are not available we can also augment the images and use labelimg to label the images and create the corresponding annotation file
          
+Now, YOLOv4 can also return the co-ordinates of the bounding boxes. In order to know how to perform object tracking and counting in a given area, Please click on the link below to my repository on vehicle tracking and counting:
+         
+https://github.com/Abhi-899/Object-tracking-and-counting-in-given-region
+
+You can output bounding box coordinates for each detection with the flag '-ext_output'. This external outputs flag will give you a few extra details about each detection within an image.
+```
+!./darknet detector test cfg/coco.data cfg/yolov4.cfg yolov4.weights data/person.jpg -ext_output
+```         
+         
