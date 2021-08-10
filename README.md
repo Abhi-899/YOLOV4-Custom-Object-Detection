@@ -1,6 +1,8 @@
 # YOLOV4-Custom-Object-Detection
 In this project we will train the YOLOv4 network on 3 classes 'Ambulance' , 'Car' , 'Person' with the Google open image dataset  and run the detection on a real video caught on a moving traffic camera.
 
+https://user-images.githubusercontent.com/64439578/128902410-a6724e49-c7b7-4862-8ef2-dc71e4b9105e.mp4
+
 Let us look at the YOLOV4 model.
 ## The Model
 YOLO stands for You Only Look Once. It’s an object detection model used in deep learning use cases, of which there are mainly 2 main families:
